@@ -16,7 +16,7 @@ Bundle 'gmarik/vundle'
 Bundle "altercation/vim-colors-solarized"
 Bundle "tpope/vim-fugitive"
 Bundle "scrooloose/syntastic"
-Bundle "git://git.wincent.com/command-t.git"
+Bundle "kien/ctrlp.vim"
 
 
 " =============================== General Settings
@@ -245,3 +245,9 @@ if &diff
     " place cursor on top of the "new" file
     autocmd VimEnter * normal lgg
 endif
+
+
+" =============================== Custom Config - Plugins
+
+" CtrlP - consider files in current git repo and untracked only
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
