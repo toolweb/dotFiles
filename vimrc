@@ -166,6 +166,18 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
+" Tabs are 2-spaces
+set tabstop=2
+
+" Use 2-spaces when shifting
+set shiftwidth=2
+
+" Tabs are 2-spaces
+set softtabstop=2
+
+" Convert tabs to spaces
+set expandtab
+
 
 " =============================== Folds
 
@@ -182,18 +194,18 @@ set foldnestmax=3
 " =============== Yelp-specific settings
 
 function YelpSettings()
-	" Use 4 spaces when shifting
-	set shiftwidth=4
+  " Use 4 spaces when shifting
+  set shiftwidth=4
 
-	" Tab char is 4 spaces
-	set softtabstop=4
-	set tabstop=4
+  " Tab char is 4 spaces
+  set softtabstop=4
+  set tabstop=4
 
-	" Don't convert tabs to spaces
-	set noexpandtab
+  " Don't convert tabs to spaces
+  set noexpandtab
 
-	" Don't break lines automatically
-	set textwidth=0
+  " Don't break lines automatically
+  set textwidth=0
 endfunction
 
 autocmd BufNewFile,BufRead ~/pg/* call YelpSettings()
@@ -234,16 +246,16 @@ noremap <Leader>9 :tabnext 9<CR>
 
 " Diff-mode mappings
 if &diff
-    " `m` - next change
-    nnoremap m ]cz.
-    " `M` - previous change
-    nnoremap M [cz.
-    " `R` - refresh
-    nnoremap R :w\|set nodiff\|set diff<cr>
-    " `q` - quit both panes
-    nnoremap q :qall<cr>
-    " place cursor on top of the "new" file
-    autocmd VimEnter * normal lgg
+  " `m` - next change
+  nnoremap m ]cz.
+  " `M` - previous change
+  nnoremap M [cz.
+  " `R` - refresh
+  nnoremap R :w\|set nodiff\|set diff<cr>
+  " `q` - quit both panes
+  nnoremap q :qall<cr>
+  " place cursor on top of the "new" file
+  autocmd VimEnter * normal lgg
 endif
 
 
