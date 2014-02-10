@@ -1,6 +1,9 @@
 " Use Vim defaults
 set nocompatible
 
+" Set to 256-color mode
+set t_Co=256
+
 
 " =============================== Vundle Settings
 
@@ -17,6 +20,9 @@ Bundle "altercation/vim-colors-solarized"
 Bundle "tpope/vim-fugitive"
 Bundle "scrooloose/syntastic"
 Bundle "kien/ctrlp.vim"
+Bundle "bling/vim-airline"
+Bundle "godlygeek/tabular"
+Bundle "tpope/vim-commentary"
 
 
 " =============================== General Settings
@@ -75,16 +81,6 @@ set spell
 
 " Always display
 set laststatus=2
-
-" Status bar display items
-" (left)  [filepath][+]
-" (right) [colnum],[linenum]/[total lines]
-set statusline=%f
-set statusline+=%m
-set statusline+=%=
-set statusline+=%c,
-set statusline+=%l/%L
-
 
 " =============================== Syntax
 
@@ -178,6 +174,14 @@ set softtabstop=2
 " Convert tabs to spaces
 set expandtab
 
+" Break lines after 79 chars.
+set textwidth=79
+
+" Mark the 81st column so it's easily recognizable
+if exists('+colorcolumn')
+  set colorcolumn=81
+endif
+
 
 " =============================== Folds
 
@@ -191,7 +195,7 @@ set foldmethod=indent
 set foldnestmax=3
 
 
-" =============== Yelp-specific settings
+" =============================== Yelp-specific settings
 
 function YelpSettings()
   " Use 4 spaces when shifting
@@ -201,11 +205,10 @@ function YelpSettings()
   set softtabstop=4
   set tabstop=4
 
-  " Don't convert tabs to spaces
-  set noexpandtab
+  " <F2> to organize Python imports
+  nmap <F2> :! ~/pg/yelp-main/tools/importly %:p<CR>
+  map  <F2> :! ~/pg/yelp-main/tools/importly %:p<CR>
 
-  " Don't break lines automatically
-  set textwidth=0
 endfunction
 
 autocmd BufNewFile,BufRead ~/pg/* call YelpSettings()
@@ -259,7 +262,31 @@ if &diff
 endif
 
 
-" =============================== Custom Config - Plugins
+" =============================== Custom Config for Plugins
 
-" CtrlP - consider files in current git repo and untracked only
+" CtrlP
+
+"" Consider files in current git repo and untracked only
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+
+" Airline
+
+"" Load glyphs for so various fancy symbols show up properly
+let g:airline_powerline_fonts = 1
+
+"" Extension - Tabline
+
+""" Disable vim's default mode display as Airline also displays that
+set noshowmode
+
+""" Enable
+let g:airline#extensions#tabline#enabled = 1
+
+""" Show tab number instead of number of windows next to tab title
+let g:airline#extensions#tabline#tab_nr_type = 1
+
+""" Show tabline/tabstatus only if there is more than 1 tab
+let g:airline#extensions#tabline#tab_min_count = 2
+
+""" Don't show buffers in tabstatus
+let g:airline#extensions#tabline#show_buffers = 0
