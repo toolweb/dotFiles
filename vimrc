@@ -290,3 +290,6 @@ let g:airline#extensions#tabline#tab_min_count = 2
 
 """ Don't show buffers in tabstatus
 let g:airline#extensions#tabline#show_buffers = 0
+
+" Syntastic
+let g:syntastic_python_checkers=['pyflakes']
