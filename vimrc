@@ -23,6 +23,7 @@ Bundle "wincent/Command-T"
 Bundle "bling/vim-airline"
 Bundle "godlygeek/tabular"
 Bundle "tpope/vim-commentary"
+Bundle "tpope/vim-surround"
 
 
 " =============================== General Settings
