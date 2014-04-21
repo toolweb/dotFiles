@@ -19,7 +19,7 @@ Bundle 'gmarik/vundle'
 Bundle "altercation/vim-colors-solarized"
 Bundle "tpope/vim-fugitive"
 Bundle "scrooloose/syntastic"
-Bundle "kien/ctrlp.vim"
+Bundle "wincent/Command-T"
 Bundle "bling/vim-airline"
 Bundle "godlygeek/tabular"
 Bundle "tpope/vim-commentary"
@@ -217,7 +217,7 @@ autocmd BufNewFile,BufRead ~/pg/* call YelpSettings()
 " =============================== Custom Mappings
 
 " tags file location
-set tags=./tags
+set tags=tags
 
 " Leader key is comma
 let mapleader = ","
