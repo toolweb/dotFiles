@@ -19,11 +19,11 @@ Bundle 'gmarik/vundle'
 Bundle "altercation/vim-colors-solarized"
 Bundle "tpope/vim-fugitive"
 Bundle "scrooloose/syntastic"
-Bundle "wincent/Command-T"
 Bundle "bling/vim-airline"
 Bundle "godlygeek/tabular"
 Bundle "tpope/vim-commentary"
 Bundle "tpope/vim-surround"
+Bundle "kien/ctrlp.vim"
 
 
 " =============================== General Settings
