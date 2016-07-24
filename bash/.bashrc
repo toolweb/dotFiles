@@ -6,7 +6,6 @@
 [[ $- != *i* ]] && return
 
 export CLICOLOR=1
-export GREP_OPTIONS='--color=auto'
 
 PS1='[\u@\h \W]\$ '
 
