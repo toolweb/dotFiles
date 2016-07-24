@@ -1,3 +1,5 @@
+alias ls='ls --color=auto'
+
 ## Git
 alias gd='git diff --color'
 alias gs='git status'
