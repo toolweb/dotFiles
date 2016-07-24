@@ -1,4 +1,5 @@
 alias ls='ls --color=auto'
+alias grep='grep --color=auto'
 
 ## Git
 alias gd='git diff --color'
