@@ -1,0 +1,18 @@
+[user]
+	name = Venkatesan Padmanabhan
+	email = toolweb@users.noreply.github.com
+
+[color]
+	ui = auto
+
+[diff]
+  external = ~/.utils/git_diff_wrapper
+
+[pager]
+	diff =
+
+[alias]
+	lol = log --oneline --graph --decorate
+
+[hooks]
+	enablescsslint = true

@@ -10,20 +10,24 @@ set t_Co=256
 " Init
 
 filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'gmarik/vundle'
+set rtp+=~/.vim/bundle/Vundle.vim
+
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
 
 " Other bundles
 
-Bundle "altercation/vim-colors-solarized"
-Bundle "tpope/vim-fugitive"
-Bundle "scrooloose/syntastic"
-Bundle "bling/vim-airline"
-Bundle "godlygeek/tabular"
-Bundle "tpope/vim-commentary"
-Bundle "tpope/vim-surround"
-Bundle "kien/ctrlp.vim"
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'tpope/vim-fugitive'
+Plugin 'scrooloose/syntastic'
+Plugin 'bling/vim-airline'
+Plugin 'godlygeek/tabular'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-surround'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'FelikZ/ctrlp-py-matcher'
+Plugin 'mhinz/vim-startify'
+call vundle#end()
 
 
 " =============================== General Settings
@@ -205,11 +209,6 @@ function YelpSettings()
   " Tab char is 4 spaces
   set softtabstop=4
   set tabstop=4
-
-  " <F2> to organize Python imports
-  nmap <F2> :! ~/pg/yelp-main/tools/importly %:p<CR>
-  map  <F2> :! ~/pg/yelp-main/tools/importly %:p<CR>
-
 endfunction
 
 autocmd BufNewFile,BufRead ~/pg/* call YelpSettings()
@@ -267,8 +266,29 @@ endif
 
 " CtrlP
 
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+
 "" Consider files in current git repo and untracked only
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+"let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+
+let g:ctrlp_match_func = {'match': 'pymatcher#PyMatch'}
+" If ag is available use it as filename list generator instead of 'find'
+if executable("ag")
+    set grepprg=ag\ --nogroup\ --nocolor
+    let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --ignore ''.git'' --ignore ''.DS_Store'' --ignore ''node_modules'' --hidden -g ""'
+endif
+
+" Set delay to prevent extra search
+let g:ctrlp_lazy_update = 350
+
+" Do not clear filenames cache, to improve CtrlP startup
+" You can manualy clear it by <F5>
+let g:ctrlp_clear_cache_on_exit = 0
+
+" Set no file limit, we are building a big project
+let g:ctrlp_max_files = 0
+
 
 " Airline
 
